@@ -48,4 +48,5 @@ class DataViewModel @Inject constructor(private val dataRepository: DataReposito
             }
         }
     }
+
 }

@@ -12,9 +12,11 @@ import kotlin.io.encoding.Base64
 object DataManager {
 
     var quotesData = emptyArray<QuoteLocalDTO>()
+    var quotesAPIData = emptyArray<QuotesDTO>()
     var isDataLoaded = mutableStateOf(false)
     // HELPER for navigation
-    var currentPage = mutableStateOf(Pages.LISTING_PAGE)
+    var currentPage = mutableStateOf(Pages.API_LISTING_PAGE)
+//    var currentPage = mutableStateOf(Pages.LISTING_PAGE)
     // For tracking the current quote
     var currentQuoteLocalDTO: QuoteLocalDTO? = null
     // For Tracking current Api Quote
@@ -42,6 +44,7 @@ object DataManager {
             }
             // Api Quotes
             Pages.API_LISTING_PAGE -> {
+                currentQuoteApiDTO = currentQuoteParamApi
                 currentPage.value = Pages.DETAIL_PAGE
             }
             // Local Quotes
@@ -66,13 +69,9 @@ object DataManager {
     }else {
         currentPage.value = Pages.LISTING_PAGE
         Log.i("page", "Current quote in DataManager else $currentQuoteLocalDTO")
-
     }
 
-
-        }
-
-
+    }
 
 /*        fun switchPages(currentQuoteParamLocalDTO: QuoteLocalDTO){
         if (currentPage.value == Pages.LISTING_PAGE){
@@ -84,6 +83,5 @@ object DataManager {
             Log.i("page", "Current quote in DataManager else $currentQuoteLocalDTO")
 
         }*/
-
 
 }
